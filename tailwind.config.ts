@@ -1,4 +1,11 @@
+/* eslint-disable func-names */
+/* eslint-disable @typescript-eslint/no-use-before-define */
 import type { Config } from "tailwindcss";
+
+// const svgToDataUri = require("mini-svg-data-uri");
+// const {
+//   default: flattenColorPalette,
+// } = require("tailwindcss/lib/util/flattenColorPalette");
 
 const config = {
   darkMode: ["class"],
@@ -52,6 +59,25 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        black: {
+          100: "var(--hume-black-100)",
+          200: "var(--hume-black-200)",
+          300: "var(--hume-black-300)",
+          400: "var(--hume-black-400)",
+          500: "var(--hume-black-500)",
+          600: "var(--hume-black-600)",
+          700: "var(--hume-black-700)",
+          800: "var(--hume-black-800)",
+          900: "var(--hume-black-900)",
+        },
+        tan: {
+          200: "var(--hume-tan-200)",
+          300: "var(--hume-tan-300)",
+          400: "var(--hume-tan-400)",
+          500: "var(--hume-tan-500)",
+          600: "var(--hume-tan-600)",
+          700: "var(--hume-tan-700)",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -74,7 +100,33 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    // addVariablesForColors,
+    // function ({ matchUtilities, theme }: any) {
+    //   matchUtilities(
+    //     {
+    //       "bg-dot-thick": (value: any) => ({
+    //         backgroundImage: `url("${svgToDataUri(
+    //           `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="16" height="16" fill="none"><circle fill="${value}" id="pattern-circle" cx="10" cy="10" r="2.5"></circle></svg>`
+    //         )}")`,
+    //       }),
+    //     },
+    //     { values: flattenColorPalette(theme("backgroundColor")), type: "color" }
+    //   );
+    // },
+  ],
 } satisfies Config;
+
+// function addVariablesForColors({ addBase, theme }: any) {
+//   const allColors = flattenColorPalette(theme("colors"));
+//   const newVars = Object.fromEntries(
+//     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+//   );
+
+//   addBase({
+//     ":root": newVars,
+//   });
+// }
 
 export default config;

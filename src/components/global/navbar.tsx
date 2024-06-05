@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 
 import MaxWidthWrapper from "./maxWidthWrapper";
 import TubeNoteLogo from "./tubenoteLogo";
@@ -18,6 +19,13 @@ function Navbar() {
               <a href="/contact">Contact</a>
             </li>
           </ul>
+
+          <Link
+            href="/signup"
+            className="group inline-flex h-3/4 cursor-pointer items-center justify-center gap-4 rounded-full border border-black-700 bg-transparent px-8 font-mono uppercase tracking-[0.01em] text-black-700 transition-colors delay-75 hover:bg-black-700 hover:text-tan-400 active:bg-black-600 active:text-tan-400"
+          >
+            Sign up
+          </Link>
         </nav>
       </MaxWidthWrapper>
     </header>
