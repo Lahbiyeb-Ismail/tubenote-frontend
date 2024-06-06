@@ -19,6 +19,53 @@ type ResponseData = {
   videoPlayer: string;
 };
 
+function extarctVideoId(videoUrl: string) {
+  const url = new URL(videoUrl);
+  const videoId = url.searchParams.get("v");
+
+  return videoId;
+}
+
+async function getVideoPlayer(videoId: string | null) {
+  let err;
+  let iframePlayer = "";
+
+  try {
+    const res = await fetch(
+      `http://localhost:5500/api/v1/videos/${videoId}/player`
+    );
+    const statusCode = res.status;
+    if (statusCode === 200) {
+      const videoData: ResponseData = await res.json();
+
+      iframePlayer = videoData.videoPlayer;
+    }
+    if (statusCode === 404) {
+      throw new Error("Video not found. Please enter a valid youtube URL.");
+    }
+  } catch (error: any) {
+    err = error;
+  }
+
+  return { err, iframePlayer };
+}
+
+function parseStringtoHtml(iframePlayer: string) {
+  const width = "100%";
+  const height = "420px";
+
+  const parser = new DOMParser();
+  const parsedIframe = parser.parseFromString(iframePlayer, "text/html").body
+    .firstChild as HTMLIFrameElement;
+
+  if (width && height) {
+    parsedIframe?.setAttribute("width", width);
+    parsedIframe?.setAttribute("height", height);
+  }
+
+  return parsedIframe;
+}
+
 function VideoSearchSection() {
   const [videoPlayer, setVideoPlayer] = useState<string>("");
   const router = useRouter();
@@ -36,41 +83,24 @@ function VideoSearchSection() {
     const { videoUrl } = data;
 
     // Extract video ID from the URL
-    const url = new URL(videoUrl);
-    const videoId = url.searchParams.get("v");
+    const videoId = extarctVideoId(videoUrl);
 
-    const width = "100%";
-    const height = "100%";
+    const { err, iframePlayer } = await getVideoPlayer(videoId);
 
-    try {
-      const res = await fetch(
-        `http://localhost:5500/api/v1/videos/${videoId}/player`
-      );
-      const statusCode = res.status;
+    if (iframePlayer) {
+      const parsedIframe = parseStringtoHtml(iframePlayer);
+      setVideoPlayer(parsedIframe?.outerHTML);
 
-      if (statusCode === 200) {
-        const videoData: ResponseData = await res.json();
+      // router.push(`/videos/${videoId}`);
+    }
 
-        const parser = new DOMParser();
-        const parsedIframe = parser.parseFromString(
-          videoData.videoPlayer,
-          "text/html"
-        ).body.firstChild as HTMLIFrameElement;
-
-        if (width && height) {
-          parsedIframe?.setAttribute("width", width);
-          parsedIframe?.setAttribute("height", height);
-        }
-        setVideoPlayer(parsedIframe?.outerHTML || "");
-        router.push(`/videos/${videoId}`);
-      } else if (statusCode === 404) {
-        throw new Error("Video not found. Please enter a valid youtube URL.");
-      }
-    } catch (error: any) {
+    if (err) {
       setError("videoUrl", {
         type: "manual",
-        message: error.message || "An unexpected error occurred.",
+        message: err.message || "An unexpected error occurred.",
       });
+
+      setVideoPlayer("");
     }
   };
 
@@ -92,12 +122,14 @@ function VideoSearchSection() {
             disabled={isSubmitting}
             className="ml-4 rounded-md bg-slate-500 px-6 py-2 text-lg font-semibold text-white hover:bg-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-opacity-50"
           >
-            Search
+            {isSubmitting ? <>Loading..</> : <>Search</>}
           </button>
         </form>
         {errors.videoUrl && (
           <p className="mt-4 text-sm text-red-600">{errors.videoUrl.message}</p>
         )}
+
+        <div dangerouslySetInnerHTML={{ __html: videoPlayer }} />
       </MaxWidthWrapper>
     </section>
   );
