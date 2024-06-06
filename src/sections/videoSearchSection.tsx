@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -20,11 +21,13 @@ type ResponseData = {
 
 function VideoSearchSection() {
   const [videoPlayer, setVideoPlayer] = useState<string>("");
+  const router = useRouter();
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    setError,
+    formState: { errors, isSubmitting },
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
   });
@@ -35,6 +38,7 @@ function VideoSearchSection() {
     // Extract video ID from the URL
     const url = new URL(videoUrl);
     const videoId = url.searchParams.get("v");
+
     const width = "100%";
     const height = "100%";
 
@@ -42,22 +46,31 @@ function VideoSearchSection() {
       const res = await fetch(
         `http://localhost:5500/api/v1/videos/${videoId}/player`
       );
-      const videoData: ResponseData = await res.json();
+      const statusCode = res.status;
 
-      const parser = new DOMParser();
-      const parsedIframe = parser.parseFromString(
-        videoData.videoPlayer,
-        "text/html"
-      ).body.firstChild as HTMLIFrameElement;
+      if (statusCode === 200) {
+        const videoData: ResponseData = await res.json();
 
-      if (width && height) {
-        parsedIframe?.setAttribute("width", width);
-        parsedIframe?.setAttribute("height", height);
+        const parser = new DOMParser();
+        const parsedIframe = parser.parseFromString(
+          videoData.videoPlayer,
+          "text/html"
+        ).body.firstChild as HTMLIFrameElement;
+
+        if (width && height) {
+          parsedIframe?.setAttribute("width", width);
+          parsedIframe?.setAttribute("height", height);
+        }
+        setVideoPlayer(parsedIframe?.outerHTML || "");
+        router.push(`/videos/${videoId}`);
+      } else if (statusCode === 404) {
+        throw new Error("Video not found. Please enter a valid youtube URL.");
       }
-
-      setVideoPlayer(parsedIframe?.outerHTML || "");
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      setError("videoUrl", {
+        type: "manual",
+        message: error.message || "An unexpected error occurred.",
+      });
     }
   };
 
@@ -76,15 +89,14 @@ function VideoSearchSection() {
           />
           <button
             type="submit"
+            disabled={isSubmitting}
             className="ml-4 rounded-md bg-slate-500 px-6 py-2 text-lg font-semibold text-white hover:bg-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-opacity-50"
           >
             Search
           </button>
         </form>
         {errors.videoUrl && (
-          <p className="mt-4 text-sm text-red-600">
-            Please enter a valid YouTube video link
-          </p>
+          <p className="mt-4 text-sm text-red-600">{errors.videoUrl.message}</p>
         )}
       </MaxWidthWrapper>
     </section>
