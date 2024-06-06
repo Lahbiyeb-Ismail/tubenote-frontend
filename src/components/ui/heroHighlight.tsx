@@ -13,20 +13,6 @@ export function HeroHighlight({
   className?: string;
   containerClassName?: string;
 }) {
-  // const mouseX = useMotionValue(0);
-  // const mouseY = useMotionValue(0);
-
-  // function handleMouseMove({
-  //   currentTarget,
-  //   clientX,
-  //   clientY,
-  // }: React.MouseEvent<HTMLDivElement>) {
-  //   if (!currentTarget) return;
-  //   const { left, top } = currentTarget.getBoundingClientRect();
-
-  //   mouseX.set(clientX - left);
-  //   mouseY.set(clientY - top);
-  // }
   return (
     <div
       className={cn(
