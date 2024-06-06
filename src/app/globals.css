@@ -34,7 +34,7 @@
 
     --radius: 0.5rem;
 
-    --black: 0 0 0;
+    /* --black: 0 0 0;
     --white: 255 255 255;
     --error: 224 120 123;
     --hume-black-900: 26 26 26;
@@ -80,7 +80,7 @@
     --grayBackground: var(--hume-black-200);
     --lightBackground: var(--hume-tan-400);
     --media-brand: 245 245 245;
-    --media-focus: 78 156 246;
+    --media-focus: 78 156 246; */
   }
 
   .dark {

@@ -5,8 +5,8 @@ import MaxWidthWrapper from "@/components/global/maxWidthWrapper";
 
 function HeroSection() {
   return (
-    <MaxWidthWrapper>
-      <section className="lg:w-1/2">
+    <MaxWidthWrapper className="mx-0">
+      <section className="flex h-screen flex-col justify-center lg:w-1/2">
         <div className="mb-12">
           <h1 className="mb-6 max-w-4xl font-mono text-4xl font-bold leading-[1.1] tracking-[-0.01em] text-neutral-700 dark:text-white md:text-6xl md:leading-[1.07]">
             Unlock the Power of Video Learning
