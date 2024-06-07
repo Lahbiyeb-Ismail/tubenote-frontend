@@ -6,13 +6,12 @@ import YoutubeVideoPlayer from "@/components/global/youtubeVideoPlayer";
 
 function VideoPage() {
   return (
-    <main className="flex h-screen bg-slate-50">
+    <main className="flex bg-slate-50">
       <Sidebar />
       <div className="flex-1 p-6">
-        <div>
-          <YoutubeVideoPlayer />
-          <TextEditor />
-        </div>
+        <YoutubeVideoPlayer />
+
+        <TextEditor />
       </div>
     </main>
   );
