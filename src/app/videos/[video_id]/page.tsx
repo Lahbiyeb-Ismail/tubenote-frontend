@@ -1,6 +1,7 @@
 import React from "react";
 
 import Sidebar from "@/components/global/sideBar";
+import TextEditor from "@/components/global/textEditor";
 import YoutubeVideoPlayer from "@/components/global/youtubeVideoPlayer";
 
 function VideoPage() {
@@ -10,7 +11,7 @@ function VideoPage() {
       <div className="flex-1 p-6">
         <div>
           <YoutubeVideoPlayer />
-          <div>Text editor</div>
+          <TextEditor />
         </div>
       </div>
     </main>
