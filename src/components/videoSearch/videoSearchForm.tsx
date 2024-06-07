@@ -1,9 +1,10 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
 import getVideoPlayer from "@/actions/getVideoPlayer";
 import { extarctVideoId, parseStringtoHtml } from "@/helper";
+import useVideoPlayerStore from "@/store/videoPlayerStore";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -15,7 +16,8 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 function VideoSearchForm() {
-  const [videoPlayer, setVideoPlayer] = useState<string>("");
+  // const [videoPlayer, setVideoPlayer] = useState<string>("");
+  const { setVideoPlayer } = useVideoPlayerStore();
   const router = useRouter();
 
   const {
