@@ -2,7 +2,7 @@ export function extarctVideoId(videoUrl: string) {
   const url = new URL(videoUrl);
   const videoId = url.searchParams.get("v");
 
-  return videoId;
+  return videoId as string;
 }
 
 export function parseStringtoHtml(iframePlayer: string) {
@@ -18,5 +18,5 @@ export function parseStringtoHtml(iframePlayer: string) {
     parsedIframe?.setAttribute("height", height);
   }
 
-  return parsedIframe;
+  return parsedIframe?.outerHTML;
 }

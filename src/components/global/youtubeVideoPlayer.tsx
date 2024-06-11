@@ -1,13 +1,16 @@
 "use client";
 
 import React from "react";
-import useVideoPlayerStore from "@/store/videoPlayerStore";
+import { parseStringtoHtml } from "@/helper";
+import useVideoDataStore from "@/store/videoDataStore";
 
 function YoutubeVideoPlayer() {
-  const { videoPlayer } = useVideoPlayerStore();
+  const { videoData } = useVideoDataStore();
+
+  const videoIframe = parseStringtoHtml(videoData.videoPlayer);
 
   return (
-    <div dangerouslySetInnerHTML={{ __html: videoPlayer }} className="mb-6" />
+    <div dangerouslySetInnerHTML={{ __html: videoIframe }} className="mb-6" />
   );
 }
 

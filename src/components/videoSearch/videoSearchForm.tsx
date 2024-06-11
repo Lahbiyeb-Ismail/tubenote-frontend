@@ -2,9 +2,9 @@
 
 import React from "react";
 import { useRouter } from "next/navigation";
-import getVideoPlayer from "@/actions/getVideoPlayer";
+import getVideoData from "@/actions/getVideoData";
 import { extarctVideoId, parseStringtoHtml } from "@/helper";
-import useVideoPlayerStore from "@/store/videoPlayerStore";
+import useVideoDataStore from "@/store/videoDataStore";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -17,7 +17,7 @@ type FormData = z.infer<typeof formSchema>;
 
 function VideoSearchForm() {
   // const [videoPlayer, setVideoPlayer] = useState<string>("");
-  const { setVideoPlayer } = useVideoPlayerStore();
+  const { setVideoData } = useVideoDataStore();
   const router = useRouter();
 
   const {
@@ -35,22 +35,16 @@ function VideoSearchForm() {
     // Extract video ID from the URL
     const videoId = extarctVideoId(videoUrl);
 
-    const { err, iframePlayer } = await getVideoPlayer(videoId);
+    try {
+      const videoData = await getVideoData(videoId);
 
-    if (iframePlayer) {
-      const parsedIframe = parseStringtoHtml(iframePlayer);
-      setVideoPlayer(parsedIframe?.outerHTML);
-
+      setVideoData(videoData);
       router.push(`/videos/${videoId}`);
-    }
-
-    if (err) {
+    } catch (error: any) {
       setError("videoUrl", {
         type: "manual",
-        message: err.message || "An unexpected error occurred.",
+        message: error.message || "An unexpected error occurred.",
       });
-
-      setVideoPlayer("");
     }
   };
   return (
