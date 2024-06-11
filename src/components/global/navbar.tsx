@@ -22,7 +22,7 @@ function Navbar() {
 
           <Link
             href="/signup"
-            className="group inline-flex h-3/4 cursor-pointer items-center justify-center gap-4 rounded-full border border-black-700 bg-transparent px-8 font-mono uppercase tracking-[0.01em] text-black-700 transition-colors delay-75 hover:bg-black-700 hover:text-tan-400 active:bg-black-600 active:text-tan-400"
+            className="border-black-700 text-black-700 hover:bg-black-700 hover:text-tan-400 active:bg-black-600 active:text-tan-400 group inline-flex h-3/4 cursor-pointer items-center justify-center gap-4 rounded-full border bg-transparent px-8 font-mono uppercase tracking-[0.01em] transition-colors delay-75"
           >
             Sign up
           </Link>
