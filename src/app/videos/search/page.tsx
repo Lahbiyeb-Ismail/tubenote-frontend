@@ -4,7 +4,7 @@ import VideoSearchSection from "@/sections/videoSearchSection";
 
 function VideoSearchPage() {
   return (
-    <main className="grid h-screen place-content-center bg-slate-50">
+    <main className="height_viewport grid place-content-center">
       <VideoSearchSection />
     </main>
   );

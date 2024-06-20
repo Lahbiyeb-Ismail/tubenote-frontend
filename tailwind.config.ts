@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 /* eslint-disable func-names */
 /* eslint-disable @typescript-eslint/no-use-before-define */
 import type { Config } from "tailwindcss";
@@ -32,7 +33,7 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "#FF0000",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {

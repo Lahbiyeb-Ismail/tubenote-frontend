@@ -3,7 +3,7 @@
 import React from "react";
 import { useRouter } from "next/navigation";
 import getVideoData from "@/actions/getVideoData";
-import { extarctVideoId, parseStringtoHtml } from "@/helper";
+import { extarctVideoId } from "@/helper";
 import useVideoDataStore from "@/store/videoDataStore";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -48,7 +48,7 @@ function VideoSearchForm() {
     }
   };
   return (
-    <div>
+    <div className="w-full">
       {" "}
       <form className="flex justify-center" onSubmit={handleSubmit(onSubmit)}>
         <input

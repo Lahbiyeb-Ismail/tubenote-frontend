@@ -5,113 +5,69 @@
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 3.9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 3.9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 3.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
 
     --radius: 0.5rem;
-
-    /* --black: 0 0 0;
-    --white: 255 255 255;
-    --error: 224 120 123;
-    --hume-black-900: 26 26 26;
-    --hume-black-800: 35 35 35;
-    --hume-black-700: 53 53 53;
-    --hume-black-600: 64 64 64;
-    --hume-black-500: 77 77 77;
-    --hume-black-400: 102 102 102;
-    --hume-black-300: 128 128 128;
-    --hume-black-200: 153 153 153;
-    --hume-black-100: 191 191 191;
-    --hume-tan-700: 153 144 135;
-    --hume-tan-600: 191 181 170;
-    --hume-tan-500: 229 218 206;
-    --hume-tan-400: 255 244 232;
-    --hume-tan-300: 255 249 242;
-    --hume-tan-200: 255 253 250;
-    --accent-orange-400: 163 127 84;
-    --accent-orange-300: 255 199 131;
-    --accent-orange-200: 255 219 176;
-    --accent-orange-100: 255 246 235;
-    --accent-pink-400: 161 109 107;
-    --accent-pink-300: 251 171 167;
-    --accent-pink-200: 252 201 199;
-    --accent-pink-100: 254 242 241;
-    --accent-purple-400: 152 125 155;
-    --accent-purple-300: 238 195 242;
-    --accent-purple-200: 244 217 247;
-    --accent-purple-100: 252 245 253;
-    --accent-blue-400: 117 134 151;
-    --accent-blue-300: 183 210 236;
-    --accent-blue-200: 209 226 243;
-    --accent-blue-100: 243 248 252;
-    --accent-turquoise-400: 117 149 151;
-    --accent-turquoise-300: 183 233 236;
-    --accent-turquoise-200: 209 241 243;
-    --accent-turquoise-100: 243 251 252;
-    --accent-green-400: 120 147 122;
-    --accent-green-300: 188 230 190;
-    --accent-green-200: 212 239 213;
-    --accent-green-100: 244 251 245;
-    --darkBackground: var(--hume-black-700);
-    --grayBackground: var(--hume-black-200);
-    --lightBackground: var(--hume-tan-400);
-    --media-brand: 245 245 245;
-    --media-focus: 78 156 246; */
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
   }
+}
+
+.height_viewport {
+  height: calc(100vh - 56px);
 }
 
 button {

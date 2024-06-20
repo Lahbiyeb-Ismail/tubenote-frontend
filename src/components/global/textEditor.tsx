@@ -10,7 +10,7 @@ import "@/app/globals.css";
 
 import useVideoDataStore from "@/store/videoDataStore";
 
-import { Button } from "../ui/button";
+// import { Button } from "../ui/button";
 
 type Note = {
   title: string;
@@ -49,7 +49,7 @@ function TextEditor() {
   };
   return (
     <div className="h-[200px]">
-      <Button
+      {/* <Button
         className="mb-6"
         type="button"
         onClick={() =>
@@ -57,8 +57,12 @@ function TextEditor() {
         }
       >
         save
-      </Button>
-      <BlockNoteView editor={editor} theme="light" className="h-full" />
+      </Button> */}
+      <BlockNoteView
+        editor={editor}
+        theme="light"
+        className="h-full border-2 border-gray-300"
+      />
     </div>
   );
 }

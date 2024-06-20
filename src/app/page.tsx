@@ -2,7 +2,7 @@ import HeroSection from "@/sections/heroSection";
 
 export default function Home() {
   return (
-    <main className="grid h-screen place-content-center bg-slate-50">
+    <main className="height_viewport grid h-screen place-content-center">
       <HeroSection />
     </main>
   );
