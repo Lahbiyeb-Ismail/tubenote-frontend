@@ -7,7 +7,7 @@ export function extarctVideoId(videoUrl: string) {
 
 export function parseStringtoHtml(iframePlayer: string) {
   const width = "100%";
-  const height = "420px";
+  const height = "100%";
 
   const parser = new DOMParser();
   const parsedIframe = parser.parseFromString(iframePlayer, "text/html").body

@@ -10,7 +10,10 @@ function YoutubeVideoPlayer() {
   const videoIframe = parseStringtoHtml(videoData.videoPlayer);
 
   return (
-    <div dangerouslySetInnerHTML={{ __html: videoIframe }} className="mb-6" />
+    <div
+      dangerouslySetInnerHTML={{ __html: videoIframe }}
+      className="mb-6 h-full"
+    />
   );
 }
 

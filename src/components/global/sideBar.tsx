@@ -11,7 +11,7 @@ import {
 
 function Sidebar() {
   return (
-    <nav className="flex h-screen w-1/5 flex-col items-center justify-between gap-10 border-r border-gray-200  px-4 py-6 dark:bg-black">
+    <nav className="flex h-screen w-full flex-col items-center justify-between gap-10   px-4 py-6 dark:bg-black">
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
           <AccordionTrigger>Chapters</AccordionTrigger>
